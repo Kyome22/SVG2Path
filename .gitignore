@@ -1,0 +1,13 @@
+.DS_Store
+original/
+
+# Xcode
+xcuserdata/
+*.xcuserstate
+
+# Swift Package Manager
+Packages
+Packages.resolved
+.swiftpm/
+.build/
+
