@@ -32,6 +32,8 @@ public final class SVG2Path {
     private var preP: CGPoint = .zero
     private var preCP: CGPoint? = nil
 
+    public init() {}
+
     private func callClose() {
         path.closeSubpath()
         preP = .zero
