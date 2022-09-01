@@ -5,8 +5,8 @@ import PackageDescription
 let package = Package(
     name: "SVG2Path",
     platforms: [
-        .macOS(.v11)
-//        .iOS(.v15)
+        .macOS(.v11),
+        .iOS(.v15)
     ],
     products: [
         .library(
@@ -15,7 +15,10 @@ let package = Package(
         )
     ],
     targets: [
-        .target(name: "SVG2Path"),
+        .target(
+            name: "SVG2Path",
+            dependencies: []
+        ),
         .testTarget(
             name: "SVG2PathTests",
             dependencies: ["SVG2Path"]

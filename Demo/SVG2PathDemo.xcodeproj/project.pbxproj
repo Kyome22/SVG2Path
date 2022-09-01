@@ -11,6 +11,7 @@
 		1C24D84028C0DB1600853461 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C24D83F28C0DB1600853461 /* ContentView.swift */; };
 		1C24D84228C0DB1700853461 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C24D84128C0DB1700853461 /* Assets.xcassets */; };
 		1C24D84528C0DB1700853461 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C24D84428C0DB1700853461 /* Preview Assets.xcassets */; };
+		1C49187A28C0E51C001DC1B5 /* SVG2Path in Frameworks */ = {isa = PBXBuildFile; productRef = 1C49187928C0E51C001DC1B5 /* SVG2Path */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C49187A28C0E51C001DC1B5 /* SVG2Path in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +42,7 @@
 				1C24D84F28C0DF4200853461 /* Packages */,
 				1C24D83C28C0DB1600853461 /* SVG2PathDemo */,
 				1C24D83B28C0DB1600853461 /* Products */,
+				1C49187828C0E51C001DC1B5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,6 +82,13 @@
 			name = Packages;
 			sourceTree = "<group>";
 		};
+		1C49187828C0E51C001DC1B5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -95,6 +105,9 @@
 			dependencies = (
 			);
 			name = SVG2PathDemo;
+			packageProductDependencies = (
+				1C49187928C0E51C001DC1B5 /* SVG2Path */,
+			);
 			productName = SVG2PathDemo;
 			productReference = 1C24D83A28C0DB1600853461 /* SVG2PathDemo.app */;
 			productType = "com.apple.product-type.application";
@@ -207,7 +220,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -261,7 +274,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -346,6 +359,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1C49187928C0E51C001DC1B5 /* SVG2Path */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SVG2Path;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1C24D83228C0DB1600853461 /* Project object */;
 }

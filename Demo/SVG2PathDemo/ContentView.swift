@@ -12,26 +12,46 @@ struct ContentView: View {
     @State var size: CGSize = .zero
     @State var paths = [Path]()
     @State var importerPresented: Bool = false
+    private let svg2Path = SVG2Path()
 
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             ZStack {
-                ForEach(paths, id: \.description) { path in
-                    path.stroke(Color.primary)
-                        .frame(width: width, height: height)
+                if paths.isEmpty {
+                    Image(systemName: "cube")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50, height: 50, alignment: .center)
+                        .foregroundColor(Color.primary)
+                } else {
+                    ForEach(paths, id: \.description) { path in
+                        path.stroke(Color.primary)
+                            .frame(width: size.width, height: size.height)
+                    }
                 }
             }
-            .frame(minWidth: 100, minHeight: 100)
+            .padding()
             Button {
                 importerPresented = true
             } label: {
                 Text("Load SVG File")
             }
-            ForEach(paths, id: \.description) { path in
-                Text(path.codeString())
+            .padding()
+            ScrollView {
+                if paths.isEmpty {
+                    EmptyView()
+                } else {
+                    ForEach(paths, id: \.description) { path in
+                        Text(path.codeString())
+                            .textSelection(.enabled)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                    }
+                }
             }
+            .padding()
         }
-        .padding()
+        .frame(minWidth: 400, maxWidth: .infinity, maxHeight: .infinity)
         .fileImporter(isPresented: $importerPresented, allowedContentTypes: [.svg], onCompletion: { result in
             switch result {
             case .success(let url):
