@@ -1,6 +1,6 @@
 import SwiftUI
 
-public typealias SVGPathData = (width: CGFloat, height: CGFloat, paths: [Path])
+public typealias SVGPathData = (size: CGSize, paths: [Path])
 
 public final class SVG2Path {
     private struct TagAndPath {
@@ -544,7 +544,8 @@ public final class SVG2Path {
                 break
             }
         } while array.contains(where: { $0.tag.hasPrefix("<g") })
+        let size = CGSize(width: svg.width, height: svg.height)
         let paths = array.compactMap { $0.path }
-        return (svg.width, svg.height, paths)
+        return (size, paths)
     }
 }

@@ -5,8 +5,8 @@ import PackageDescription
 let package = Package(
     name: "SVG2Path",
     platforms: [
-        .macOS(.v11),
-        .iOS(.v15)
+        .macOS(.v11)
+//        .iOS(.v15)
     ],
     products: [
         .library(

@@ -14,8 +14,7 @@ final class SVG2PathTests: XCTestCase {
         </svg>
         """
         let actual = try XCTUnwrap(svg2Path.extractPath(text: text))
-        XCTAssertEqual(actual.width, 280.0)
-        XCTAssertEqual(actual.height, 40.0)
+        XCTAssertEqual(actual.size, CGSize(width: 280, height: 40))
         XCTAssertEqual(actual.paths.count, 1)
         let expect = """
         path.move(to: CGPoint(x: 10.7223, y: 33.3258))
@@ -51,8 +50,7 @@ final class SVG2PathTests: XCTestCase {
         </svg>
         """
         let actual = try XCTUnwrap(svg2Path.extractPath(text: text))
-        XCTAssertEqual(actual.width, 280.0)
-        XCTAssertEqual(actual.height, 40.0)
+        XCTAssertEqual(actual.size, CGSize(width: 280, height: 40))
         XCTAssertEqual(actual.paths.count, 1)
         let expect = """
         path.move(to: CGPoint(x: 46.0000, y: 9.0000))
@@ -71,8 +69,7 @@ final class SVG2PathTests: XCTestCase {
         </svg>
         """
         let actual = try XCTUnwrap(svg2Path.extractPath(text: text))
-        XCTAssertEqual(actual.width, 280.0)
-        XCTAssertEqual(actual.height, 40.0)
+        XCTAssertEqual(actual.size, CGSize(width: 280, height: 40))
         XCTAssertEqual(actual.paths.count, 1)
         let expect = """
         path.move(to: CGPoint(x: 115.0000, y: 20.0000))
@@ -100,8 +97,7 @@ final class SVG2PathTests: XCTestCase {
         </svg>
         """
         let actual = try XCTUnwrap(svg2Path.extractPath(text: text))
-        XCTAssertEqual(actual.width, 280.0)
-        XCTAssertEqual(actual.height, 40.0)
+        XCTAssertEqual(actual.size, CGSize(width: 280, height: 40))
         XCTAssertEqual(actual.paths.count, 1)
         let expect = """
         path.move(to: CGPoint(x: 150.0568, y: 20.0000))
@@ -129,8 +125,7 @@ final class SVG2PathTests: XCTestCase {
         </svg>
         """
         let actual = try XCTUnwrap(svg2Path.extractPath(text: text))
-        XCTAssertEqual(actual.width, 280.0)
-        XCTAssertEqual(actual.height, 40.0)
+        XCTAssertEqual(actual.size, CGSize(width: 280, height: 40))
         XCTAssertEqual(actual.paths.count, 1)
         let expect = """
         path.move(to: CGPoint(x: 167.0253, y: 10.9283))
@@ -146,8 +141,7 @@ final class SVG2PathTests: XCTestCase {
         </svg>
         """
         let actual = try XCTUnwrap(svg2Path.extractPath(text: text))
-        XCTAssertEqual(actual.width, 280.0)
-        XCTAssertEqual(actual.height, 40.0)
+        XCTAssertEqual(actual.size, CGSize(width: 280, height: 40))
         XCTAssertEqual(actual.paths.count, 1)
         let expect = """
         path.move(to: CGPoint(x: 207.0253, y: 4.9156))
@@ -166,8 +160,7 @@ final class SVG2PathTests: XCTestCase {
         </svg>
         """
         let actual = try XCTUnwrap(svg2Path.extractPath(text: text))
-        XCTAssertEqual(actual.width, 280.0)
-        XCTAssertEqual(actual.height, 40.0)
+        XCTAssertEqual(actual.size, CGSize(width: 280, height: 40))
         XCTAssertEqual(actual.paths.count, 1)
         let expect = """
         path.move(to: CGPoint(x: 257.4531, y: 6.4742))
@@ -188,8 +181,7 @@ final class SVG2PathTests: XCTestCase {
         </svg>
         """
         let actual = try XCTUnwrap(svg2Path.extractPath(text: text))
-        XCTAssertEqual(actual.width, 260.0)
-        XCTAssertEqual(actual.height, 80.0)
+        XCTAssertEqual(actual.size, CGSize(width: 260, height: 80))
         XCTAssertEqual(actual.paths.count, 1)
         let expect = """
         path.move(to: CGPoint(x: 13.6291, y: 32.9978))
@@ -209,8 +201,7 @@ final class SVG2PathTests: XCTestCase {
             </svg>
             """
             let actual = try XCTUnwrap(svg2Path.extractPath(text: text))
-            XCTAssertEqual(actual.width, 280.0)
-            XCTAssertEqual(actual.height, 40.0)
+            XCTAssertEqual(actual.size, CGSize(width: 280, height: 40))
             XCTAssertEqual(actual.paths.count, 1)
             let expect = """
             path.move(to: CGPoint(x: 46.0000, y: 9.0000))
@@ -229,8 +220,7 @@ final class SVG2PathTests: XCTestCase {
             </svg>
             """
             let actual = try XCTUnwrap(svg2Path.extractPath(text: text))
-            XCTAssertEqual(actual.width, 280.0)
-            XCTAssertEqual(actual.height, 40.0)
+            XCTAssertEqual(actual.size, CGSize(width: 280, height: 40))
             XCTAssertEqual(actual.paths.count, 1)
             let expect = """
             path.move(to: CGPoint(x: 56.0000, y: 4.0000))
@@ -251,8 +241,7 @@ final class SVG2PathTests: XCTestCase {
             </svg>
             """
             let actual = try XCTUnwrap(svg2Path.extractPath(text: text))
-            XCTAssertEqual(actual.width, 280.0)
-            XCTAssertEqual(actual.height, 40.0)
+            XCTAssertEqual(actual.size, CGSize(width: 280, height: 40))
             XCTAssertEqual(actual.paths.count, 1)
             let expect = """
             path.move(to: CGPoint(x: 230.0000, y: 40.0000))
@@ -280,8 +269,7 @@ final class SVG2PathTests: XCTestCase {
             </svg>
             """
             let actual = try XCTUnwrap(svg2Path.extractPath(text: text))
-            XCTAssertEqual(actual.width, 280.0)
-            XCTAssertEqual(actual.height, 40.0)
+            XCTAssertEqual(actual.size, CGSize(width: 280, height: 40))
             XCTAssertEqual(actual.paths.count, 1)
             let expect = """
             path.move(to: CGPoint(x: 230.0000, y: 30.0000))
@@ -311,8 +299,7 @@ final class SVG2PathTests: XCTestCase {
             </svg>
             """
             let actual = try XCTUnwrap(svg2Path.extractPath(text: text))
-            XCTAssertEqual(actual.width, 280.0)
-            XCTAssertEqual(actual.height, 40.0)
+            XCTAssertEqual(actual.size, CGSize(width: 280, height: 40))
             XCTAssertEqual(actual.paths.count, 1)
             let expect = """
             path.move(to: CGPoint(x: 35.3372, y: 30.7942))
@@ -331,8 +318,7 @@ final class SVG2PathTests: XCTestCase {
             </svg>
             """
             let actual = try XCTUnwrap(svg2Path.extractPath(text: text))
-            XCTAssertEqual(actual.width, 280.0)
-            XCTAssertEqual(actual.height, 40.0)
+            XCTAssertEqual(actual.size, CGSize(width: 280, height: 40))
             XCTAssertEqual(actual.paths.count, 1)
             let expect = """
             path.move(to: CGPoint(x: 28.0167, y: 18.1147))
@@ -363,8 +349,7 @@ final class SVG2PathTests: XCTestCase {
         </svg>
         """
         let actual = try XCTUnwrap(svg2Path.extractPath(text: text))
-        XCTAssertEqual(actual.width, 260.0)
-        XCTAssertEqual(actual.height, 80.0)
+        XCTAssertEqual(actual.size, CGSize(width: 260, height: 80))
         XCTAssertEqual(actual.paths.count, 3)
         let expect1 = """
         path.move(to: CGPoint(x: 56.3172, y: 4.3141))
