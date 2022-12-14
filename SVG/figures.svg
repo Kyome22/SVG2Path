@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_レイヤー_1" data-name="レイヤー 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 40">
+  <path d="M10.7223,33.32578s-8.33087-6.22693-1.9602-11.12744,7.46966-7.31466,6.61569-10.5361
+          c-1.65447-6.24117,4.63253-8.781,7.93746-5.35877,3.31674,3.43446-.9272,6.70584,.88346,10.01426
+          c3.18866,5.82627,5.14207,4.25976,8.08584,8.16665,3.01216,3.99765,1.33227,11.86664-8.4825,10.60925
+          c-7.01454-.89865-3.80205-11.03237-3.80205-11.03237" style="fill: #fff; stroke: #000; stroke-miterlimit: 10;"/>
+  <rect x="46" y="9" width="28" height="22" style="fill: #fff; stroke: #000; stroke-miterlimit: 10;"/>
+  <circle cx="100" cy="20" r="15" style="fill: #fff; stroke: #000; stroke-miterlimit: 10;"/>
+  <ellipse cx="140" cy="20" rx="10.05677" ry="16.5" style="fill: #fff; stroke: #000; stroke-miterlimit: 10;"/>
+  <line x1="167.02532" y1="10.92827" x2="192.97468" y2="29.07173" style="fill: #fff; stroke: #000; stroke-miterlimit: 10;"/>
+  <polyline points="207.02532 4.91561 225.16878 4.91561 234.24051 20.32911 220.63291 35.08439 205.75949 21.58228" style="fill: #fff; stroke: #000; stroke-miterlimit: 10;"/>
+  <polygon points="257.45308 6.47422 246.91717 19.48498 256.03536 33.52578 272.20664 29.19271 273.08283 12.47392 257.45308 6.47422" style="fill: #fff; stroke: #000; stroke-miterlimit: 10;"/>
+</svg>

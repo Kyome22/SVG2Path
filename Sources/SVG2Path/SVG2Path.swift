@@ -323,7 +323,9 @@ public final class SVG2Path {
     private func extractPath(tag: String) -> Path? {
         let d = tag.match(pattern: #"\sd="([^"]+)""#)
         if d.items.isEmpty { return nil }
-        let dText = d.items[1].replacingOccurrences(of: " ", with: "")
+        let dText = d.items[1]
+            .replacingOccurrences(of: #" +([a-zA-Z])"#, with: "$1", options: .regularExpression)
+            .replacingOccurrences(of: " ", with: ",")
         var path = getPath(text: dText)
         if let transform = getTransform(text: tag) {
             path = path.applying(transform)

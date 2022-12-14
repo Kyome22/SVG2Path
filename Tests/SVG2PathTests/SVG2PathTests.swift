@@ -408,4 +408,114 @@ final class SVG2PathTests: XCTestCase {
         }
         XCTAssertEqual(results, [expect1, expect2, expect3])
     }
+
+    func testIssue1() throws {
+        let text = """
+        <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 280" fill="none">
+            <circle cx="133" cy="20" r="20" fill="#F4F4F4" />
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M67 78c0-36.45 29.55-66 66-66 36.451 0 66 29.55 66 66v5H67v-5z" fill="#3C4F5C" />
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M64 69.772c0-2.389 1.058-4.64 3.046-5.963C74.846 58.62 97.47 46 133.073 46c35.606 0 58.137 12.62 65.898 17.81 1.979 1.323 3.029 3.567 3.029 5.947V99.95c0 3.306-3.907 5.385-6.783 3.756C184.842 97.829 163.109 88 133.804 88c-29.759 0-52.525 10.137-63.172 15.977-2.853 1.565-6.632-.496-6.632-3.749V69.772z" fill="#000" fill-opacity=".1" />
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M64 67.772c0-2.389 1.058-4.64 3.046-5.963C74.846 56.62 97.47 44 133.073 44c35.606 0 58.137 12.62 65.898 17.81 1.979 1.323 3.029 3.567 3.029 5.947V97.95c0 3.306-3.907 5.385-6.783 3.756C184.842 95.829 163.109 86 133.804 86c-29.759 0-52.525 10.137-63.172 15.977-2.853 1.565-6.632-.496-6.632-3.75V67.773z" fill="#F4F4F4" />
+        </svg>
+        """
+        let actual = try XCTUnwrap(svg2Path.extractPath(text: text))
+        XCTAssertEqual(actual.size, CGSize(width: 280, height: 280))
+        XCTAssertEqual(actual.paths.count, 4)
+        let results = actual.paths.map { path in
+            return path.codeString()
+        }
+        let expect1 = """
+        path.move(to: CGPoint(x: 153.0000, y: 20.0000))
+        path.addCurve(to: CGPoint(x: 133.0000, y: 40.0000),
+                      control1: CGPoint(x: 153.0000, y: 31.0457),
+                      control2: CGPoint(x: 144.0457, y: 40.0000))
+        path.addCurve(to: CGPoint(x: 113.0000, y: 20.0000),
+                      control1: CGPoint(x: 121.9543, y: 40.0000),
+                      control2: CGPoint(x: 113.0000, y: 31.0457))
+        path.addCurve(to: CGPoint(x: 133.0000, y: 0.0000),
+                      control1: CGPoint(x: 113.0000, y: 8.9543),
+                      control2: CGPoint(x: 121.9543, y: 0.0000))
+        path.addCurve(to: CGPoint(x: 153.0000, y: 20.0000),
+                      control1: CGPoint(x: 144.0457, y: 0.0000),
+                      control2: CGPoint(x: 153.0000, y: 8.9543))
+        path.closeSubpath()
+        """
+        let expect2 = """
+        path.move(to: CGPoint(x: 67.0000, y: 78.0000))
+        path.addCurve(to: CGPoint(x: 133.0000, y: 12.0000),
+                      control1: CGPoint(x: 67.0000, y: 41.5500),
+                      control2: CGPoint(x: 96.5500, y: 12.0000))
+        path.addCurve(to: CGPoint(x: 199.0000, y: 78.0000),
+                      control1: CGPoint(x: 169.4510, y: 12.0000),
+                      control2: CGPoint(x: 199.0000, y: 41.5500))
+        path.addLine(to: CGPoint(x: 199.0000, y: 83.0000))
+        path.addLine(to: CGPoint(x: 67.0000, y: 83.0000))
+        path.addLine(to: CGPoint(x: 67.0000, y: 78.0000))
+        path.closeSubpath()
+        """
+        let expect3 = """
+        path.move(to: CGPoint(x: 64.0000, y: 69.7720))
+        path.addCurve(to: CGPoint(x: 67.0460, y: 63.8090),
+                      control1: CGPoint(x: 64.0000, y: 67.3830),
+                      control2: CGPoint(x: 65.0580, y: 65.1320))
+        path.addCurve(to: CGPoint(x: 133.0730, y: 46.0000),
+                      control1: CGPoint(x: 74.8460, y: 58.6200),
+                      control2: CGPoint(x: 97.4700, y: 46.0000))
+        path.addCurve(to: CGPoint(x: 198.9710, y: 63.8100),
+                      control1: CGPoint(x: 168.6790, y: 46.0000),
+                      control2: CGPoint(x: 191.2100, y: 58.6200))
+        path.addCurve(to: CGPoint(x: 202.0000, y: 69.7570),
+                      control1: CGPoint(x: 200.9500, y: 65.1330),
+                      control2: CGPoint(x: 202.0000, y: 67.3770))
+        path.addLine(to: CGPoint(x: 202.0000, y: 99.9500))
+        path.addCurve(to: CGPoint(x: 195.2170, y: 103.7060),
+                      control1: CGPoint(x: 202.0000, y: 103.2560),
+                      control2: CGPoint(x: 198.0930, y: 105.3350))
+        path.addCurve(to: CGPoint(x: 133.8040, y: 88.0000),
+                      control1: CGPoint(x: 184.8420, y: 97.8290),
+                      control2: CGPoint(x: 163.1090, y: 88.0000))
+        path.addCurve(to: CGPoint(x: 70.6320, y: 103.9770),
+                      control1: CGPoint(x: 104.0450, y: 88.0000),
+                      control2: CGPoint(x: 81.2790, y: 98.1370))
+        path.addCurve(to: CGPoint(x: 64.0000, y: 100.2280),
+                      control1: CGPoint(x: 67.7790, y: 105.5420),
+                      control2: CGPoint(x: 64.0000, y: 103.4810))
+        path.addLine(to: CGPoint(x: 64.0000, y: 69.7720))
+        path.closeSubpath()
+        """
+        let expect4 = """
+        path.move(to: CGPoint(x: 64.0000, y: 67.7720))
+        path.addCurve(to: CGPoint(x: 67.0460, y: 61.8090),
+                      control1: CGPoint(x: 64.0000, y: 65.3830),
+                      control2: CGPoint(x: 65.0580, y: 63.1320))
+        path.addCurve(to: CGPoint(x: 133.0730, y: 44.0000),
+                      control1: CGPoint(x: 74.8460, y: 56.6200),
+                      control2: CGPoint(x: 97.4700, y: 44.0000))
+        path.addCurve(to: CGPoint(x: 198.9710, y: 61.8100),
+                      control1: CGPoint(x: 168.6790, y: 44.0000),
+                      control2: CGPoint(x: 191.2100, y: 56.6200))
+        path.addCurve(to: CGPoint(x: 202.0000, y: 67.7570),
+                      control1: CGPoint(x: 200.9500, y: 63.1330),
+                      control2: CGPoint(x: 202.0000, y: 65.3770))
+        path.addLine(to: CGPoint(x: 202.0000, y: 97.9500))
+        path.addCurve(to: CGPoint(x: 195.2170, y: 101.7060),
+                      control1: CGPoint(x: 202.0000, y: 101.2560),
+                      control2: CGPoint(x: 198.0930, y: 103.3350))
+        path.addCurve(to: CGPoint(x: 133.8040, y: 86.0000),
+                      control1: CGPoint(x: 184.8420, y: 95.8290),
+                      control2: CGPoint(x: 163.1090, y: 86.0000))
+        path.addCurve(to: CGPoint(x: 70.6320, y: 101.9770),
+                      control1: CGPoint(x: 104.0450, y: 86.0000),
+                      control2: CGPoint(x: 81.2790, y: 96.1370))
+        path.addCurve(to: CGPoint(x: 64.0000, y: 98.2270),
+                      control1: CGPoint(x: 67.7790, y: 103.5420),
+                      control2: CGPoint(x: 64.0000, y: 101.4810))
+        path.addLine(to: CGPoint(x: 64.0000, y: 67.7730))
+        path.closeSubpath()
+        """
+        XCTAssertEqual(results[0], expect1)
+        XCTAssertEqual(results[1], expect2)
+        XCTAssertEqual(results[2], expect3)
+        XCTAssertEqual(results[3], expect4)
+    }
 }
