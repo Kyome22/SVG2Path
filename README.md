@@ -3,6 +3,12 @@
 - Convert SVG to Path of SwiftUI.
 - Output codes of the Path.
 
+## Requirements
+
+- Written in Swift 5.9
+- Compatible with iOS 15.0+, macOS 11.0+
+- Development with Xcode 15.2+
+
 ## Usage
 
 ```swift

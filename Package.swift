@@ -1,4 +1,4 @@
-// swift-tools-version: 5.6
+// swift-tools-version: 5.9
 
 import PackageDescription
 
@@ -17,7 +17,7 @@ let package = Package(
     targets: [
         .target(
             name: "SVG2Path",
-            dependencies: []
+            resources: [.copy("PrivacyInfo.xcprivacy")]
         ),
         .testTarget(
             name: "SVG2PathTests",
