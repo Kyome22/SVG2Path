@@ -1,6 +1,10 @@
-// swift-tools-version: 5.9
+// swift-tools-version: 6.0
 
 import PackageDescription
+
+let swiftSettings: [SwiftSetting] = [
+    .enableUpcomingFeature("ExistentialAny"),
+]
 
 let package = Package(
     name: "SVG2Path",
@@ -16,11 +20,13 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "SVG2Path"
+            name: "SVG2Path",
+            swiftSettings: swiftSettings
         ),
         .testTarget(
             name: "SVG2PathTests",
-            dependencies: ["SVG2Path"]
+            dependencies: ["SVG2Path"],
+            swiftSettings: swiftSettings
         )
     ]
 )

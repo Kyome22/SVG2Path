@@ -5,9 +5,9 @@
 
 ## Requirements
 
-- Written in Swift 5.9
+- Development with Xcode 16.0+
+- Written in Swift 6.0
 - Compatible with iOS 15.0+, macOS 11.0+
-- Development with Xcode 15.2+
 
 ## Usage
 
