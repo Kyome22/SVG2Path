@@ -3,14 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1C24D83E28C0DB1600853461 /* SVG2PathDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C24D83D28C0DB1600853461 /* SVG2PathDemoApp.swift */; };
 		1C24D84028C0DB1600853461 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C24D83F28C0DB1600853461 /* ContentView.swift */; };
 		1C24D84228C0DB1700853461 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C24D84128C0DB1700853461 /* Assets.xcassets */; };
-		1C24D84528C0DB1700853461 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C24D84428C0DB1700853461 /* Preview Assets.xcassets */; };
 		1C49187A28C0E51C001DC1B5 /* SVG2Path in Frameworks */ = {isa = PBXBuildFile; productRef = 1C49187928C0E51C001DC1B5 /* SVG2Path */; };
 /* End PBXBuildFile section */
 
@@ -19,7 +18,6 @@
 		1C24D83D28C0DB1600853461 /* SVG2PathDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVG2PathDemoApp.swift; sourceTree = "<group>"; };
 		1C24D83F28C0DB1600853461 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1C24D84128C0DB1700853461 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1C24D84428C0DB1700853461 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1C24D84628C0DB1700853461 /* SVG2PathDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SVG2PathDemo.entitlements; sourceTree = "<group>"; };
 		1C24D85028C0DF4200853461 /* SVG2Path */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SVG2Path; path = ..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -57,21 +55,12 @@
 		1C24D83C28C0DB1600853461 /* SVG2PathDemo */ = {
 			isa = PBXGroup;
 			children = (
+				1C24D84628C0DB1700853461 /* SVG2PathDemo.entitlements */,
+				1C24D84128C0DB1700853461 /* Assets.xcassets */,
 				1C24D83D28C0DB1600853461 /* SVG2PathDemoApp.swift */,
 				1C24D83F28C0DB1600853461 /* ContentView.swift */,
-				1C24D84128C0DB1700853461 /* Assets.xcassets */,
-				1C24D84628C0DB1700853461 /* SVG2PathDemo.entitlements */,
-				1C24D84328C0DB1700853461 /* Preview Content */,
 			);
 			path = SVG2PathDemo;
-			sourceTree = "<group>";
-		};
-		1C24D84328C0DB1700853461 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				1C24D84428C0DB1700853461 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		1C24D84F28C0DF4200853461 /* Packages */ = {
@@ -120,7 +109,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
-				LastUpgradeCheck = 1340;
+				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					1C24D83928C0DB1600853461 = {
 						CreatedOnToolsVersion = 13.4.1;
@@ -128,7 +117,6 @@
 				};
 			};
 			buildConfigurationList = 1C24D83528C0DB1600853461 /* Build configuration list for PBXProject "SVG2PathDemo" */;
-			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -136,6 +124,7 @@
 				Base,
 			);
 			mainGroup = 1C24D83128C0DB1600853461;
+			preferredProjectObjectVersion = 77;
 			productRefGroup = 1C24D83B28C0DB1600853461 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -150,7 +139,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C24D84528C0DB1700853461 /* Preview Assets.xcassets in Resources */,
 				1C24D84228C0DB1700853461 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -174,6 +162,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -203,9 +192,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -234,6 +225,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -263,9 +255,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -287,12 +281,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SVG2PathDemo/SVG2PathDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"SVG2PathDemo/Preview Content\"";
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = VJ5N2X84K8;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -306,7 +299,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyome.SVG2PathDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 			};
 			name = Debug;
 		};
@@ -314,12 +307,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SVG2PathDemo/SVG2PathDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"SVG2PathDemo/Preview Content\"";
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = VJ5N2X84K8;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -333,7 +325,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyome.SVG2PathDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 			};
 			name = Release;
 		};
