@@ -16,8 +16,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "SVG2Path",
-            resources: [.copy("PrivacyInfo.xcprivacy")]
+            name: "SVG2Path"
         ),
         .testTarget(
             name: "SVG2PathTests",
