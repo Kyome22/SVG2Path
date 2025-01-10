@@ -9,9 +9,9 @@ import SwiftUI
 import SVG2Path
 
 struct ContentView: View {
-    @State var size: CGSize = .zero
+    @State var size = CGSize.zero
     @State var paths = [Path]()
-    @State var importerPresented: Bool = false
+    @State var importerPresented = false
     private let svg2Path = SVG2Path()
 
     var body: some View {
@@ -38,37 +38,42 @@ struct ContentView: View {
             }
             .padding()
             ScrollView {
-                if paths.isEmpty {
-                    EmptyView()
-                } else {
-                    ForEach(paths, id: \.description) { path in
-                        Text(path.codeString())
-                            .textSelection(.enabled)
-                            .frame(maxWidth: .infinity)
-                            .padding()
+                if !paths.isEmpty {
+                    VStack(spacing: 16) {
+                        ForEach(paths, id: \.description) { path in
+                            Text(path.codeString())
+                                .multilineTextAlignment(.leading)
+                                .textSelection(.enabled)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
                     }
+                    .padding()
                 }
             }
-            .padding()
         }
         .frame(minWidth: 400, maxWidth: .infinity, maxHeight: .infinity)
-        .fileImporter(isPresented: $importerPresented, allowedContentTypes: [.svg], onCompletion: { result in
-            switch result {
-            case .success(let url):
-                guard let text = try? String(contentsOf: url, encoding: .utf8),
-                      let result = svg2Path.extractPath(text: text)
-                else { return }
-                size = result.size
-                paths = result.paths
-            case .failure(let error):
-                Swift.print(error.localizedDescription)
+        .fileImporter(
+            isPresented: $importerPresented,
+            allowedContentTypes: [.svg],
+            onCompletion: { result in
+                switch result {
+                case let .success(url):
+                    guard url.startAccessingSecurityScopedResource() else { return }
+                    defer { url.stopAccessingSecurityScopedResource() }
+                    guard let text = try? String(contentsOf: url, encoding: .utf8),
+                          let result = svg2Path.extractPath(text: text) else {
+                        return
+                    }
+                    size = result.size
+                    paths = result.paths
+                case let .failure(error):
+                    Swift.print(error.localizedDescription)
+                }
             }
-        })
+        )
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    ContentView()
 }

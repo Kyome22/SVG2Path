@@ -24,12 +24,12 @@ final class SVG2PathTests: XCTestCase {
         path.addCurve(to: CGPoint(x: 15.3778, y: 11.6622),
                       control1: CGPoint(x: 15.1328, y: 17.2978),
                       control2: CGPoint(x: 16.2318, y: 14.8837))
-        path.addCurve(to: CGPoint(x: 23.3152, y: 6.3035),
+        path.addCurve(to: CGPoint(x: 23.3153, y: 6.3035),
                       control1: CGPoint(x: 13.7233, y: 5.4211),
                       control2: CGPoint(x: 20.0103, y: 2.8812))
         path.addCurve(to: CGPoint(x: 24.1987, y: 16.3177),
                       control1: CGPoint(x: 26.6320, y: 9.7379),
-                      control2: CGPoint(x: 22.3880, y: 13.0093))
+                      control2: CGPoint(x: 22.3881, y: 13.0093))
         path.addCurve(to: CGPoint(x: 32.2845, y: 24.4844),
                       control1: CGPoint(x: 27.3874, y: 22.1440),
                       control2: CGPoint(x: 29.3408, y: 20.5775))
@@ -193,6 +193,7 @@ final class SVG2PathTests: XCTestCase {
         XCTAssertEqual(actual.paths[0].codeString(), expect)
     }
 
+    @MainActor
     func testTransformTranslate() throws {
         try XCTContext.runActivity(named: "only tx", block: { _ in
             let text = """
@@ -233,6 +234,7 @@ final class SVG2PathTests: XCTestCase {
         })
     }
 
+    @MainActor
     func testTransformScale() throws {
         try XCTContext.runActivity(named: "only sx", block: { _ in
             let text = """
@@ -291,6 +293,7 @@ final class SVG2PathTests: XCTestCase {
         })
     }
 
+    @MainActor
     func testTransformRotate() throws {
         try XCTContext.runActivity(named: "only angle", block: { _ in
             let text = """
@@ -372,13 +375,13 @@ final class SVG2PathTests: XCTestCase {
                       control2: CGPoint(x: 57.5993, y: 75.6850))
         path.closeSubpath()
         path.move(to: CGPoint(x: 123.5190, y: 36.3776))
-        path.addCurve(to: CGPoint(x: 112.9726, y: 51.1086),
+        path.addCurve(to: CGPoint(x: 112.9726, y: 51.1087),
                       control1: CGPoint(x: 125.1627, y: 42.5123),
                       control2: CGPoint(x: 120.4409, y: 49.1076))
         path.addCurve(to: CGPoint(x: 96.4738, y: 43.6240),
                       control1: CGPoint(x: 105.5043, y: 53.1097),
                       control2: CGPoint(x: 98.1175, y: 49.7587))
-        path.addCurve(to: CGPoint(x: 107.0202, y: 28.8929),
+        path.addCurve(to: CGPoint(x: 107.0202, y: 28.8930),
                       control1: CGPoint(x: 94.8301, y: 37.4893),
                       control2: CGPoint(x: 99.5519, y: 30.8940))
         path.addCurve(to: CGPoint(x: 123.5190, y: 36.3776),

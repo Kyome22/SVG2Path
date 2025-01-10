@@ -3,7 +3,7 @@ import SwiftUI
 public extension Path {
     func codeString(n: Int = 4) -> String {
         var texts = [String]()
-        self.cgPath.applyWithBlock { element in
+        cgPath.applyWithBlock { element in
             switch element.pointee.type {
             case CGPathElementType.moveToPoint:
                 texts.append("path.move(to: \(element.pointee.points[0].output(n)))")
