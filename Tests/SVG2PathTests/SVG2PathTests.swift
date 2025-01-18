@@ -406,9 +406,7 @@ final class SVG2PathTests: XCTestCase {
         path.addLine(to: CGPoint(x: 243.1000, y: 25.0000))
         path.closeSubpath()
         """
-        let results = actual.paths.map { path in
-            return path.codeString()
-        }
+        let results = actual.paths.map { $0.codeString() }
         XCTAssertEqual(results, [expect1, expect2, expect3])
     }
 
@@ -424,9 +422,7 @@ final class SVG2PathTests: XCTestCase {
         let actual = try XCTUnwrap(svg2Path.extractPath(text: text))
         XCTAssertEqual(actual.size, CGSize(width: 280, height: 280))
         XCTAssertEqual(actual.paths.count, 4)
-        let results = actual.paths.map { path in
-            return path.codeString()
-        }
+        let results = actual.paths.map { $0.codeString() }
         let expect1 = """
         path.move(to: CGPoint(x: 153.0000, y: 20.0000))
         path.addCurve(to: CGPoint(x: 133.0000, y: 40.0000),
