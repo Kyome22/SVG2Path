@@ -1,4 +1,4 @@
-// swift-tools-version: 6.0
+// swift-tools-version: 6.2
 
 import PackageDescription
 
@@ -10,7 +10,7 @@ let package = Package(
     name: "SVG2Path",
     platforms: [
         .macOS(.v11),
-        .iOS(.v15)
+        .iOS(.v14),
     ],
     products: [
         .library(

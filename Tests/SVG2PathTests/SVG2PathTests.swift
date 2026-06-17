@@ -410,6 +410,36 @@ final class SVG2PathTests: XCTestCase {
         XCTAssertEqual(results, [expect1, expect2, expect3])
     }
 
+    func testScientificNotation() throws {
+        let text = """
+        <svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 31.922134 28.822571 C 18.625351 43.578766 -3.606625 47.569824 -21.499998 37.239075 C -25.499327 34.930084 -28.987415 32.075623 -31.924545 28.823975 L -6.960279 14.410828 C -4.855878 15.429108 -2.494611 16 -1e-06 16 C 2.494609 16 4.855876 15.429108 6.960277 14.410828 L 31.922134 28.822571 Z"/>
+        </svg>
+        """
+        let actual = try XCTUnwrap(svg2Path.extractPath(text: text))
+        XCTAssertEqual(actual.size, CGSize(width: 300, height: 300))
+        XCTAssertEqual(actual.paths.count, 1)
+        let expect = """
+        path.move(to: CGPoint(x: 31.9221, y: 28.8226))
+        path.addCurve(to: CGPoint(x: -21.5000, y: 37.2391),
+                      control1: CGPoint(x: 18.6254, y: 43.5788),
+                      control2: CGPoint(x: -3.6066, y: 47.5698))
+        path.addCurve(to: CGPoint(x: -31.9245, y: 28.8240),
+                      control1: CGPoint(x: -25.4993, y: 34.9301),
+                      control2: CGPoint(x: -28.9874, y: 32.0756))
+        path.addLine(to: CGPoint(x: -6.9603, y: 14.4108))
+        path.addCurve(to: CGPoint(x: -0.0000, y: 16.0000),
+                      control1: CGPoint(x: -4.8559, y: 15.4291),
+                      control2: CGPoint(x: -2.4946, y: 16.0000))
+        path.addCurve(to: CGPoint(x: 6.9603, y: 14.4108),
+                      control1: CGPoint(x: 2.4946, y: 16.0000),
+                      control2: CGPoint(x: 4.8559, y: 15.4291))
+        path.addLine(to: CGPoint(x: 31.9221, y: 28.8226))
+        path.closeSubpath()
+        """
+        XCTAssertEqual(actual.paths[0].codeString(), expect)
+    }
+
     func testIssue1() throws {
         let text = """
         <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 280" fill="none">
