@@ -118,7 +118,18 @@ public struct SVG2Path {
     }
 
     private func callCommand(_ state: inout State, with command: Command) {
-        switch command.type.uppercased() {
+        let type = command.type.uppercased()
+        let requiredCount: Int
+        switch type {
+        case "Z":           requiredCount = 0
+        case "H", "V":      requiredCount = 1
+        case "M", "L", "T": requiredCount = 2
+        case "S", "Q":      requiredCount = 4
+        case "C":           requiredCount = 6
+        default:            requiredCount = -1
+        }
+        guard requiredCount >= 0, command.points.count >= requiredCount else { return }
+        switch type {
         case "M":
             callMove(
                 &state,
@@ -192,7 +203,7 @@ public struct SVG2Path {
         var code = text
         var floats = [CGFloat]()
         repeat {
-            let d = code.match(pattern: #",?\s?(-?\d*\.?\d*)"#)
+            let d = code.match(pattern: #",?\s?(-?\d*\.?\d*(?:[eE][+-]?\d+)?)"#)
             if d.items.isEmpty {
                 code = ""
             } else {
@@ -217,7 +228,7 @@ public struct SVG2Path {
         var state = State()
         var code = text
         repeat {
-            let d = code.match(pattern: #"[a-zA-Z](,?\s?-?\d*\.?\d*)+"#)
+            let d = code.match(pattern: #"[a-zA-Z](,?\s?-?\d*\.?\d*(?:[eE][+-]?\d+)?)+"#)
             if var item = d.items.first {
                 code = d.trailing
                 let type = item.removeFirst()

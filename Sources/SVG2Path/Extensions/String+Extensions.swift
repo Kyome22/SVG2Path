@@ -26,7 +26,7 @@ extension String {
     }
 
     func toFloat() -> Double {
-        NumberFormatter().number(from: self)?.doubleValue ?? 0
+        Double(self) ?? 0
     }
 
     var trimmingWhitespaces: String {
