@@ -5,6 +5,7 @@
 //  Created by Takuto Nakamura on 2022/09/01.
 //
 
+import AppKit
 import SwiftUI
 import SVG2Path
 
@@ -15,14 +16,17 @@ struct ContentView: View {
     private let svg2Path = SVG2Path()
 
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: 20) {
             ZStack {
                 if paths.isEmpty {
-                    Image(systemName: "cube")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 50, height: 50, alignment: .center)
-                        .foregroundColor(Color.primary)
+                    ContentUnavailableView {
+                        Label {
+                            Text("No Paths")
+                        } icon: {
+                            Image(systemName: "cube")
+                        }
+                    }
+                    .fixedSize()
                 } else {
                     ForEach(paths, id: \.description) { path in
                         path.stroke(Color.primary)
@@ -36,22 +40,34 @@ struct ContentView: View {
             } label: {
                 Text("Load SVG File")
             }
-            .padding()
             ScrollView {
-                if !paths.isEmpty {
-                    VStack(spacing: 16) {
-                        ForEach(paths, id: \.description) { path in
-                            Text(path.codeString())
-                                .multilineTextAlignment(.leading)
-                                .textSelection(.enabled)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                        }
+                VStack(spacing: 16) {
+                    ForEach(paths, id: \.description) { path in
+                        let code = path.codeString()
+                        Text(code)
+                            .multilineTextAlignment(.leading)
+                            .textSelection(.enabled)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .overlay(alignment: .topTrailing) {
+                                Button {
+                                    copyToClipboard(code)
+                                } label: {
+                                    Image(systemName: "doc.on.doc")
+                                }
+                                .buttonStyle(.borderless)
+                                .help("Copy to Clipboard")
+                            }
                     }
-                    .padding()
+                    if paths.isEmpty {
+                        Spacer().frame(maxWidth: .infinity)
+                    }
                 }
+                .padding(8)
             }
+            .border(Color(.separatorColor))
         }
         .frame(minWidth: 400, maxWidth: .infinity, maxHeight: .infinity)
+        .padding()
         .fileImporter(
             isPresented: $importerPresented,
             allowedContentTypes: [.svg],
@@ -71,6 +87,11 @@ struct ContentView: View {
                 }
             }
         )
+    }
+
+    private func copyToClipboard(_ text: String) {
+        NSPasteboard.general.clearContents()
+        NSPasteboard.general.setString(text, forType: .string)
     }
 }
 
